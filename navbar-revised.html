@@ -1,0 +1,88 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Flexbox</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <style>
+    :root {
+    	--text-main-color: #AAA;
+        --text-main-color-hover: #666;
+        --border-main-color: #CCC;
+        --bg-main-color: #FFF;
+    }
+    * {
+    	font-family: verdana;
+        margin: 0;
+    }
+    body {
+    	background-color: var(--bg-main-color);
+    }
+    nav {
+    	display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid var(--border-main-color);
+        flex-wrap: wrap-reverse;
+    }
+    nav > ul {
+    	padding: 0;
+    	list-style-type: none;
+        width: 100%;
+    }
+    nav > ul > li > a {
+        display: block;
+        padding: 15px;
+    }
+    a {
+    	text-decoration: none;
+        color: var(--text-main-color);
+    }
+    a:hover {
+    	color: var(--text-main-color-hover);
+    }
+    #profile {
+        display: flex;
+        align-items: center;
+        background-color: var(--text-main-color);
+    }
+    #profile > a {
+    	font-size: 2rem;
+        color: var(--bg-main-color);
+    }
+    @media screen and (min-width: 576px) {
+    	nav {
+            padding: 0 5%;
+        }
+    	nav > ul {
+    		display: flex;
+            width: auto;
+    	}
+        nav > ul > li {
+            flex: 1 1 0;
+        }
+        #profile {
+            background-color: var(--bg-main-color);
+        }
+        #profile > a {
+            padding: 0;
+            color: var(--text-main-color);
+        }
+    }
+  </style>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="">Learn</a></li>
+            <li><a href="">Stories</a></li>
+            <li><a href="">Discuss</a></li>
+            <li><a href="">Shop</a></li>
+            <li><a href="">More</a></li>
+		</ul>
+    	
+        <ul>
+            <li id="profile"><a href=""><i class="bi bi-person-circle"></i></a></li>
+        </ul>
+
+	</nav>
+</body>
+</html>
