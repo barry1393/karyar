@@ -1,0 +1,80 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		body {
+			margin: 0;
+			background-color: #CCC;
+		}
+		div {
+			background-color: red;
+			height: 100px;
+			width: 90%;
+		}
+		div ~ main {
+			height: 100px;
+			background-color: blue;
+		}
+		p {
+			background-color: #999;
+			color: #FFF;
+			padding: 5px 25px;
+			margin: 0;
+		}
+		p.main > span {
+			color: red;
+			font-size: 24px;
+		}
+		p.main > a {
+			text-decoration: none;
+		}
+		p.main > a:active {
+			color: black;
+		}
+		p.main > a:hover {
+			font-size: 24px;
+		}
+		aside {
+			background-color: pink;
+			height: inherit;
+			width: 20%;
+		}
+		ul {
+			list-style-type: none;
+			background-color: #333;
+			margin: 0;
+			height: 50px;
+			padding: 0;
+			color: ghostwhite;
+			font-family: Tahoma;
+		}
+		li {
+			width: max-content;
+			padding: 5px;
+			height: 40px;
+			line-height: 40px;
+			float: left;
+		}
+		li:not(:last-child) {
+			border-right: 1px solid #222;
+		}
+		li:not(:first-child) {
+			border-left: 1px solid #444;
+		}
+	</style>
+</head>
+<body>
+  <ul>
+  	<li>Moz</li>
+    <li>Sib</li>
+    <li>Gilas</li>
+    <li>Talebi</li>
+  </ul>
+  <div>
+  	<aside>Hello World</aside>
+  </div>
+  <main></main>
+  <p class="main"><em>Lorem ipsum</em> <small>dolor</small> <span>sit amet</span>, <a href="#">molestias</a> consectetur adipisicing elit. Qui provident, necessitatibus cum perspiciatis. Beatae, corrupti, similique! Repellendus ullam officia molestias! Cum, harum incidunt quasi tempore alias suscipit quaerat corrupti? <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque cupiditate, ut earum dolorem cum officiis ex tempora, tempore voluptatem ea modi porro laboriosam expedita, esse quisquam iste aspernatur quae fuga?</p>
+</body>
+</html>
