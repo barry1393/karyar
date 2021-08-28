@@ -2,86 +2,219 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Flexbox</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <style>
-    :root {
-    	--text-main-color: #AAA;
-        --text-main-color-hover: #666;
-        --border-main-color: #CCC;
-        --bg-main-color: #FFF;
-    }
-    * {
-    	font-family: verdana;
-        margin: 0;
-    }
-    body {
-    	background-color: var(--bg-main-color);
-    }
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <style>
+  :root {
+    --text-main-color: #AAA;
+    --text-main-color-hover: #666;
+    --border-main-color: #CCC;
+    --bg-main-color: #FFF;
+  }
+  * {
+    font-family: verdana;
+    margin: 0;
+  }
+  body {
+    background-color: var(--bg-main-color);
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--border-main-color);
+    flex-wrap: wrap-reverse;
+    position: fixed;
+    background-color: var(--bg-main-color);
+    box-sizing: border-box;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+  }
+  nav > ul {
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+  }
+  nav > ul > li > a {
+    display: flex;
+    padding: 15px;
+  }
+  a {
+    text-decoration: none;
+    color: var(--text-main-color);
+  }
+  a:hover {
+    color: var(--text-main-color-hover);
+  }
+  #profile {
+    display: flex;
+    align-items: center;
+    background-color: var(--text-main-color);
+  }
+  #profile > a {
+    font-size: 2rem;
+    color: var(--bg-main-color);
+  }
+  i {
+    margin-right: 5px;
+  }
+  .dropdown {
+    position: relative;
+    display: none;
+  }
+  .dropdown-content {
+    position: absolute;
+    background-color: var(--bg-main-color);
+    min-width: 200px;
+    padding: 0;
+    border-radius: 10px;
+    z-index: 1;
+    list-style-type: none;
+    border: 2px solid var(--border-main-color);
+    top: 45px;
+    display: none;
+  }
+  .dropdown-content > li > a {
+    display: flex;
+    padding: 15px;
+  }
+  .dropdown-content > li:not(:first-child) > a {
+    border-top: 2px solid var(--border-main-color);
+  }
+  .dropdown-content::before {
+    content: "▲";
+    position: absolute;
+    color: var(--border-main-color);
+    top: -1em;
+    left: 1em;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  @media screen and (min-width: 768px) {
     nav {
-    	display: flex;
-        justify-content: space-between;
-        border-bottom: 2px solid var(--border-main-color);
-        flex-wrap: wrap-reverse;
+      padding: 0 5%;
     }
     nav > ul {
-    	padding: 0;
-    	list-style-type: none;
-        width: 100%;
+      display: flex;
+      width: auto;
     }
-    nav > ul > li > a {
-        display: block;
-        padding: 15px;
-    }
-    a {
-    	text-decoration: none;
-        color: var(--text-main-color);
-    }
-    a:hover {
-    	color: var(--text-main-color-hover);
+    nav > ul > li {
+      flex: 1 1 0;
     }
     #profile {
-        display: flex;
-        align-items: center;
-        background-color: var(--text-main-color);
+      background-color: var(--bg-main-color);
     }
     #profile > a {
-    	font-size: 2rem;
-        color: var(--bg-main-color);
+      padding: 0;
+      color: var(--text-main-color);
     }
-    @media screen and (min-width: 576px) {
-    	nav {
-            padding: 0 5%;
-        }
-    	nav > ul {
-    		display: flex;
-            width: auto;
-    	}
-        nav > ul > li {
-            flex: 1 1 0;
-        }
-        #profile {
-            background-color: var(--bg-main-color);
-        }
-        #profile > a {
-            padding: 0;
-            color: var(--text-main-color);
-        }
+    nav > ul > li:not(:first-child) {
+      margin-left: 5%;
     }
-    </style>
+    .dropdown {
+      display: inline-block;
+    }
+  }
+  .transparent-layer {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  main {
+    margin-top: 50px;
+    padding: 50px;
+  }
+  section {
+    border: 2px solid var(--border-main-color);
+    background-color: #EEE;
+    height: 250px;
+  }
+  section:not(:first-child) {
+    margin-top: 50px;
+  }
+  section:not(:last-child) {
+    margin-bottom: 50px;
+  }
+  </style>
 </head>
 <body>
 	<nav>
 		<ul>
-            <li><a href="">Learn</a></li>
-            <li><a href="">Stories</a></li>
-            <li><a href="">Discuss</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">More</a></li>
+      <li><a href="">
+      	<i style="margin-top: 2px; color: #1CB0F6;;" class="bi bi-pencil"></i>
+        <span>Learn</span>
+      </a></li>
+      <li><a href="">
+        <i style="margin-top: 3px;" class="bi bi-book"></i>
+        <span>Stories</span>
+      </a></li>
+      <li><a href="">
+        <i style="margin-top: 3px;" class="bi bi-chat"></i>
+        <span>Discuss</span>
+      </a></li>
+      <li><a href="">
+        <i style="margin-top: 1px;" class="bi bi-shop-window"></i>
+        <span>Shop</span>
+      </a></li>
+      <li class="dropdown">
+        <a style="pointer-events: none;" href="">
+          <i style="margin-top: 2px;" class="bi bi-three-dots"></i>
+          <span>More</span>
+        </a>
+        <ul class="dropdown-content">
+          <li><a href="">
+            <i style="margin-top: 2px; color: #FF4B4B;" class="bi bi-geo-alt-fill"></i>
+            <span>Events</span>
+          </a></li>
+          <li><a href="">
+            <i style="margin-top: 1px; color: #8612FB;" class="bi bi-earbuds"></i>
+            <span>Podcast</span>
+          </a></li>
+          <li><a href="">
+            <i style="margin-top: 2px; color: #1CB0F6;" class="bi bi-bank2"></i>
+            <span>Schools</span>
+          </a></li>
+          <li><a href="">
+            <i style="margin-top: 2px; color: #FEC701;" class="bi bi-search"></i>
+            <span>Dictionary</span>
+          </a></li>
+          <li><a href="">
+            <i style="margin-top: 2px; color: #168CC4;" class="bi bi-card-text"></i>
+            <span>Words</span>
+          </a></li>
         </ul>
-        <ul>
-            <li id="profile"><a href=""><i class="bi bi-person-circle"></i></a></li>
-        </ul>
-
+      </li>
+    </ul>
+    <ul>
+      <li id="profile"><a href=""><i class="bi bi-person-circle"></i></a></li>
+    </ul>
 	</nav>
+  
+  <div class="transparent-layer"></div>
+
+  <main>
+  	<section></section>
+    <section></section>
+    <section></section>
+  </main>
+
+  <script>
+    $(".dropdown").hover(() => {
+      $(".transparent-layer").fadeIn(300)
+    })
+    $(".dropdown").mouseleave(() => {
+      $(".transparent-layer").fadeOut(300)
+    })
+  </script>
 </body>
 </html>
