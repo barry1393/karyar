@@ -39,7 +39,7 @@
     list-style-type: none;
     width: 100%;
   }
-  nav > ul > li > a {
+  nav > ul > li > a, nav > ul > li > span {
     display: flex;
     padding: 15px;
   }
@@ -50,16 +50,25 @@
   a:hover {
     color: var(--text-main-color-hover);
   }
-  #profile {
+  #profile, #list {
     display: flex;
     align-items: center;
-    background-color: var(--text-main-color);
   }
-  #profile > a {
+  #profile > a, #list > span {
     font-size: 2rem;
     color: var(--bg-main-color);
+    cursor: pointer;
   }
-  i {
+  #list > span:hover {
+    background-color: #999;
+  }
+  .top-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--text-main-color);
+  }
+  i:not(.bi-list, .bi-person-circle) {
     margin-right: 5px;
   }
   .dropdown {
@@ -95,6 +104,9 @@
   .dropdown:hover .dropdown-content {
     display: block;
   }
+  .main-menu {
+    display: none;
+  }
   @media screen and (min-width: 768px) {
     nav {
       padding: 0 5%;
@@ -113,11 +125,17 @@
       padding: 0;
       color: var(--text-main-color);
     }
-    nav > ul > li:not(:first-child) {
+    nav > ul:not(.top-nav) > li:not(:first-child) {
       margin-left: 5%;
+    }
+    #list {
+      display: none;
     }
     .dropdown {
       display: inline-block;
+    }
+    .main-menu {
+      display: flex !important;
     }
   }
   .transparent-layer {
@@ -149,7 +167,7 @@
 </head>
 <body>
 	<nav>
-		<ul>
+		<ul class="main-menu">
       <li><a href="">
       	<i style="margin-top: 2px; color: #1CB0F6;;" class="bi bi-pencil"></i>
         <span>Learn</span>
@@ -195,8 +213,9 @@
         </ul>
       </li>
     </ul>
-    <ul>
+    <ul class="top-nav">
       <li id="profile"><a href=""><i class="bi bi-person-circle"></i></a></li>
+      <li id="list"><span><i class="bi bi-list"></i></span></li>
     </ul>
 	</nav>
   
@@ -214,6 +233,9 @@
     })
     $(".dropdown").mouseleave(() => {
       $(".transparent-layer").fadeOut(300)
+    })
+    $("#list > span").click(() => {
+      $(".main-menu").slideToggle(100)
     })
   </script>
 </body>
